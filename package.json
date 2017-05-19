@@ -1,0 +1,19 @@
+{
+  "name": "react-vr-walk",
+  "version": "0.0.1",
+  "description": "Wall around your ReactVr app with WASD!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apoeco/react-vr-walk.git"
+  },
+  "author": "Apostolis Economou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apoeco/react-vr-walk/issues"
+  },
+  "homepage": "https://github.com/apoeco/react-vr-walk#readme"
+}
