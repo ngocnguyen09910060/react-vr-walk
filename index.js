@@ -47,20 +47,20 @@ export default class Walk extends React.Component {
   walk({position}) {
     switch (position) {
       case 'w':
-        this.positionZ = this.positionZ - 0.1;
+        this.positionZ = this.positionZ - (this.props.speed ? this.props.speed : 0.1);
         this.moveZ(null, { dz: this.positionZ });
         break
       case 'a':
-        this.positionX = this.positionX + 0.1;
+        this.positionX = this.positionX + (this.props.speed ? this.props.speed : 0.1);
         this.moveX(null, { dx: this.positionX });
         console.log('a');
         break
       case 's':
-        this.positionZ = this.positionZ + 0.1;
+        this.positionZ = this.positionZ + (this.props.speed ? this.props.speed : 0.1);
         this.moveZ(null, { dz: this.positionZ });
         break
       case 'd':
-        this.positionX = this.positionX - 0.1;
+        this.positionX = this.positionX - (this.props.speed ? this.props.speed : 0.1);
         this.moveX(null, { dx: this.positionX });
         break
       default:
