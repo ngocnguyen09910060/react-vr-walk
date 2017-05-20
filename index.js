@@ -81,7 +81,7 @@ export default class Walk extends React.Component {
   render() {
     return (
       <AnimatedScene onInput={(e) => this.onInput(e)} style={{ transform: [{translateZ: this.state.z}, {translateX: this.state.x }] }}>
-        <AnimatedPano source={this.props.panoSource} style={{ transform: [ { translate: [0,0,this.state.pz] } ] }} />
+        <AnimatedPano source={this.props.panoSource} style={{ transform: [ { translateZ: this.state.pz } ] }} />
         {this.props.children}
       </AnimatedScene>
     );
