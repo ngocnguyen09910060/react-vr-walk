@@ -11,7 +11,7 @@ export default class Walk extends React.Component {
     super(props)
     this.state = {
       x: new Animated.Value(0),
-      z: new Animated.Value(0),
+      z: new Animated.Value(props.starting ? props.starting : 0),
     }
     this.moveZ = Animated.event([
       null, { dz: this.state.z },
