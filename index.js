@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Scene,
   Animated,
+  Pano
 } from 'react-vr';
 
 const AnimatedScene = Animated.createAnimatedComponent(Scene);
@@ -12,15 +13,20 @@ export default class Walk extends React.Component {
     this.state = {
       x: new Animated.Value(0),
       z: new Animated.Value(props.starting ? props.starting : 0),
+      pz: new Animated.Value(props.startingPano ? props.startingPano : 0),
     }
     this.moveZ = Animated.event([
       null, { dz: this.state.z },
+    ])
+    this.movePZ = Animated.event([
+      null, { dz: this.state.pz },
     ])
     this.moveX = Animated.event([
       null, { dx: this.state.x },
     ])
 
     this.positionZ = props.starting ? props.starting : 0
+    this.positionPZ = props.startingPano ? props.startingPano : 0
     this.positionX = 0
 
   }
@@ -48,7 +54,9 @@ export default class Walk extends React.Component {
     switch (position) {
       case 'w':
         this.positionZ = this.positionZ - (this.props.speed ? this.props.speed : 0.1);
+        this.positionPZ = this.positionPZ - (this.props.speed ? this.props.speed : 0.1);
         this.moveZ(null, { dz: this.positionZ });
+        this.movePZ(null, { dz: this.positionPZ });
         break
       case 'a':
         this.positionX = this.positionX + (this.props.speed ? this.props.speed : 0.1);
@@ -57,7 +65,9 @@ export default class Walk extends React.Component {
         break
       case 's':
         this.positionZ = this.positionZ + (this.props.speed ? this.props.speed : 0.1);
+        this.positionPZ = this.positionPZ + (this.props.speed ? this.props.speed : 0.1);
         this.moveZ(null, { dz: this.positionZ });
+        this.movePZ(null, { dz: this.positionPZ });
         break
       case 'd':
         this.positionX = this.positionX - (this.props.speed ? this.props.speed : 0.1);
@@ -70,6 +80,7 @@ export default class Walk extends React.Component {
   render() {
     return (
       <AnimatedScene onInput={(e) => this.onInput(e)} style={{ transform: [{translateZ: this.state.z}, {translateX: this.state.x }] }}>
+        <Animated.Pano source={this.props.panoSource} style={{ transform: [ { translate: [0,0,this.state.pz] } ] }} />
         {this.props.children}
       </AnimatedScene>
     );
