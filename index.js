@@ -20,7 +20,7 @@ export default class Walk extends React.Component {
       null, { dx: this.state.x },
     ])
 
-    this.positionZ = props.starting ? prop.starting : 0
+    this.positionZ = props.starting ? props.starting : 0
     this.positionX = 0
 
   }
